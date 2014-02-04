@@ -18,16 +18,17 @@ define(function (require) {
 		aspectRatio = 16 / 9,
 		padding = 0.95,
 		width = viewWidth * padding,
-		height = width / aspectRatio,
-		videoHtml;
+		height = width / aspectRatio;
 	
 	Video = function (videoId) {
 		this.videoId = videoId;
 	};
 	
 	loadVideo = function (videoId) {
+		var url = 'http://www.youtube.com/watch?v=' + videoId,
+			videoHtml;
+		
 		console.log('Load video with id = ' + videoId);
-		var url = 'http://www.youtube.com/watch?v=' + videoId;
 
 		if (player) {
 			player.dispose();
@@ -50,16 +51,17 @@ define(function (require) {
 	};
 	
 	search = function () {
-		if (!this.query()) {
-			this.query('arctic monkeys');
-		}
-		var queryString = queryPrefix + (this.query()).replace(" ", "+") + '&key=' + apiKey;
+// 		if (!vm.query()) {
+// 			vm.query('arctic monkeys');
+//		}
+		var queryString = queryPrefix + (vm.query()).replace(" ", "+") + '&key=' + apiKey;
 		console.log('do the search for: ' + queryString);
 		
 		$.get(queryString, function (data, status) {
 			var i, l, vid, vidObj;
 			if (status === 'success') {
 				console.log(data);
+				vm.vids = []; // always reset the video array
 				for (i = 0, l = data.items.length; i < l; i += 1) {
 					vid = data.items[i];
 					if (vid && vid.id && vid.id.videoId) {
@@ -79,7 +81,7 @@ define(function (require) {
 	
 	vm = {
 		vids: [],
-		query: ko.observable(),
+		query: ko.observable('black sabbath'),
 		search: search,
 		loadVideo: loadVideo
 	};
