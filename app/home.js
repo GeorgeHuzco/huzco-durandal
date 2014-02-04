@@ -52,10 +52,14 @@ define(function (require) {
 	return {
 		// vids: [new Video('9JCZT_51GA0'), new Video('OGPD0ZBiMs0')],
 		vids: ko.observableArray([]),
-		query: ko.observable('black sabbath'),
+		query: ko.observable(''),
 		activate: function () {
 			var tempArray = [], queryString,
 				that = this;
+				
+			if (that.query() === '') {
+				return;
+			}
 			
 			queryString = queryPrefix + (that.query()).replace(" ", "+") + '&key=' + apiKey;
 			console.log('do the search for: ' + queryString);
@@ -75,7 +79,7 @@ define(function (require) {
 				}
 				
 				if (that.vids[0]) {
-					vm.loadVideo(vm.vids[0].videoId);
+					that.loadVideo(that.vids[0].videoId);
 				}
 				console.log('Number of vids: ' +  that.vids.length);
 	
