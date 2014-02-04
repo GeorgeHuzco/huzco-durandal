@@ -1,0 +1,28 @@
+<div id="header">
+
+	<section id="search_section">
+	  <form class="form-inline">
+		<fieldset>
+		   <label>Keywords</label>
+		   <input type="text" data-bind="value: query, valueUpdate: 'afterkeydown'"/>
+		   <button type="submit" class="btn" data-bind="click: search">Search</button>
+		</fieldset>
+	  </form>
+	</section>
+
+	<div id="social">
+	  <a href="https://www.facebook.com/huzco" target="_blank"><img src="img/facebook.gif" /></a>
+	  <a href="https://twitter.com/huzcocom" target="_blank"><img src="img/twitter.png" /></a>
+	</div>
+
+	<div id="player" />
+</div>
+
+<div id="guts">
+
+	<ul data-bind="foreach: vids">
+		<li data-bind="text: videoId" />
+	</ul>
+
+	<div id="footer" />
+</div>
