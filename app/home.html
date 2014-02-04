@@ -5,7 +5,7 @@
 		<fieldset>
 		   <label>Keywords</label>
 		   <input type="text" data-bind="value: query, valueUpdate: 'afterkeydown'"/>
-		   <button type="submit" class="btn" data-bind="click: search">Search</button>
+		   <button type="submit" class="btn" data-bind="click: activate">Search</button>
 		</fieldset>
 	  </form>
 	</section>
@@ -21,7 +21,9 @@
 <div id="guts">
 
 	<ul data-bind="foreach: vids">
-		<li data-bind="text: videoId" />
+		<li>
+			<span data-bind="text: videoId"> </span>
+		</li>
 	</ul>
 
 	<div id="footer" />
