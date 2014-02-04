@@ -1,0 +1,77 @@
+/* app css stylesheet */
+
+ul {
+    list-style-type: none;
+}
+
+section.shift {
+	margin-top: 120px;
+}
+
+#search_section {
+  margin-top: 120px;
+}
+
+#view {
+  background-color: #ddd;
+}
+
+#banner {
+  text-align: center;
+}
+
+#fullAlbum {
+  margin: 10px;
+}
+
+#search {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+#player {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ddd;
+}
+
+#vid {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.vid_result {
+  margin-top: 10px;
+}
+
+.clear_hr {
+  clear: left;
+}
+
+.thumb_img {
+}
+
+#social {
+  text-align: right;
+}
+
+#social img {
+  padding: 5px;
+}
+
+.thumb_img_img {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.thumb_data {
+}
+
+.thumb_data_data {
+  background-color: rgba(100, 0, 0, .02);
+}
+

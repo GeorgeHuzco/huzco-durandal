@@ -10,22 +10,21 @@ define(function (require) {
 		http = require('plugins/http'),
 		queryPrefix = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=',
 		apiKey = 'AIzaSyBRsops2-sGNOAR2KzHvZwYTgqjPWEbD9k',
-		//Video,
 		loadVideo,
+		loadVideoById,
 		search,
 		player = null,
-		viewWidth = 1000, //document.getElementById("guts").clientWidth,
+		viewWidth = $("#applicationHost").width(),
 		aspectRatio = 16 / 9,
 		padding = 0.95,
 		width = viewWidth * padding,
 		height = width / aspectRatio;
 	
-//	Video = function (videoId) {
-//		this.videoId = videoId;
-//		this.url = 
-//	};
+	loadVideo = function (data, event) {
+		loadVideoById(event.currentTarget.id);
+	};
 	
-	loadVideo = function (videoId) {
+	loadVideoById = function (videoId) {
 		var url = 'http://www.youtube.com/watch?v=' + videoId,
 			videoHtml;
 		
@@ -52,9 +51,9 @@ define(function (require) {
 	};
 	
 	search = function () {
-		var tempArray = [], queryString,
-			that = this;
+		var queryString, that = this;
 			
+		// don't search the first time you load the page.
 		if (that.query() === '') {
 			return;
 		}
@@ -66,25 +65,22 @@ define(function (require) {
 			var i, l, vid, vidObj;
 			console.log('we got something in the promise.');
 			console.log(response);
-			that.vids([]); // always reset the video array
+			that.vids([]);
 			for (i = 0, l = response.items.length; i < l; i += 1) {
 				vid = response.items[i];
 				if (vid && vid.id && vid.id.videoId) {
 					console.log(vid.id.videoId);
-					//vidObj = new Video(vid.id.videoId);
 					that.vids.push(vid);
 				}
 			}
-			
-			if (that.vids[0]) {
-				that.loadVideo(that.vids[0].id.videoId);
+			if (that.vids()[0]) {
+				loadVideoById(that.vids()[0].id.videoId);
 			}
 			console.log('Number of vids: ' +  that.vids.length);
 		});
 	};
 	
 	return {
-		// vids: [new Video('9JCZT_51GA0'), new Video('OGPD0ZBiMs0')],
 		vids: ko.observableArray([]),
 		query: ko.observable(''),
 		activate: search,

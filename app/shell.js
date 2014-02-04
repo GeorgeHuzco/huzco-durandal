@@ -9,8 +9,8 @@ define(function (require) {
 		router: router,
 		activate: function () {
 			router.map([
-				{ route: '', title: 'Home', moduleId: 'home', nav: true },
-				{ route: 'contact', title: 'Contact', moduleId: 'contact', nav: true }
+				{ route: '', title: 'Home', moduleId: 'home', nav: true }
+			//	{ route: 'contact', title: 'Contact', moduleId: 'contact', nav: true }
 			]).buildNavigationModel();
 		
 			return router.activate();

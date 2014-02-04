@@ -22,8 +22,16 @@
 
 	<ul data-bind="foreach: vids">
 		<li>
-			<img data-bind="attr: { src: snippet.thumbnails.high.url }" >
-			<span data-bind="text: id.videoId"> </span>
+			<div class="vid_result row" data-bind="attr: { id: id.videoId }" >
+				<div class="thumb_img span6" data-bind="click: loadVideo">
+					<img class="img-responsive thumb_img_img" data-bind="attr: { src: snippet.thumbnails.high.url }" >
+				</div>
+				<div class="thumb_data span6">
+					<p class"thumb_title lead" ><span data-bind="text: snippet.title"> </span></p>
+					<p class="thumb_description small"><span data-bind="text: snippet.description"> </span></p>
+				</div>
+				<span data-bind="text: id.videoId"> </span>
+			</div>
 		</li>
 	</ul>
 
