@@ -22,7 +22,8 @@
 
 	<ul data-bind="foreach: vids">
 		<li>
-			<span data-bind="text: videoId"> </span>
+			<img data-bind="attr: { src: snippet.thumbnails.high.url }" >
+			<span data-bind="text: id.videoId"> </span>
 		</li>
 	</ul>
 

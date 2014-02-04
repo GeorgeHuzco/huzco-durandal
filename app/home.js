@@ -10,8 +10,8 @@ define(function (require) {
 		http = require('plugins/http'),
 		queryPrefix = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=',
 		apiKey = 'AIzaSyBRsops2-sGNOAR2KzHvZwYTgqjPWEbD9k',
-		Video,
-		loadVideo, 
+		//Video,
+		loadVideo,
 		search,
 		player = null,
 		viewWidth = 1000, //document.getElementById("guts").clientWidth,
@@ -20,9 +20,10 @@ define(function (require) {
 		width = viewWidth * padding,
 		height = width / aspectRatio;
 	
-	Video = function (videoId) {
-		this.videoId = videoId;
-	};
+//	Video = function (videoId) {
+//		this.videoId = videoId;
+//		this.url = 
+//	};
 	
 	loadVideo = function (videoId) {
 		var url = 'http://www.youtube.com/watch?v=' + videoId,
@@ -70,13 +71,13 @@ define(function (require) {
 				vid = response.items[i];
 				if (vid && vid.id && vid.id.videoId) {
 					console.log(vid.id.videoId);
-					vidObj = new Video(vid.id.videoId);
-					that.vids.push(vidObj);
+					//vidObj = new Video(vid.id.videoId);
+					that.vids.push(vid);
 				}
 			}
 			
 			if (that.vids[0]) {
-				that.loadVideo(that.vids[0].videoId);
+				that.loadVideo(that.vids[0].id.videoId);
 			}
 			console.log('Number of vids: ' +  that.vids.length);
 		});
